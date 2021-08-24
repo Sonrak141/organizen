@@ -54,9 +54,10 @@ function Input() {
   const modalClose = () => setmodalVisible(false);
 
   const deleteItem = () => {
-    let id = itemToDelete.id
-    const newData = DATA.filter((item) => item.id === id);
-    console.log(newData);
+    let id = ''
+    itemToDelete? id = itemToDelete.id: null
+    const newData = DATA.filter((item) => item.id !== id);
+    setDATA(newData);
     setmodalVisible(false);
   }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { 
     Text, 
     View, 
@@ -6,7 +6,8 @@ import {
     TextInput, 
     Button, 
     TouchableOpacity,
-    FlatList 
+    FlatList,
+    CheckBox 
 } from "react-native";
 
 interface Props {
@@ -15,9 +16,17 @@ interface Props {
 }
 
 const Item: React.FC<Props> = ({item, modalOpen}) => {
+    const [done, setdone] = useState(false)
     return (
         <TouchableOpacity onPress={() => modalOpen(item.id)} style={[styles.item]}>
+            <View style={[styles.itemContainer]}>
             <Text>{item.title}</Text>
+            <CheckBox
+          value={done}
+          onValueChange={setdone}
+          
+        />
+        </View>
         </TouchableOpacity>  
     )
 }
@@ -28,7 +37,13 @@ const styles = StyleSheet.create({
         backgroundColor: "#CAF0BB",
         padding: 10,
         marginVertical: 10,
-      }
+      },
+    itemContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+    }  
+
 })
 
 export default Item
