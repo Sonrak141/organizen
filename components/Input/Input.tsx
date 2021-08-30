@@ -21,6 +21,7 @@ function Input() {
   const [DATA, setDATA] = useState<DATA[]>([]);
   const [modalVisible, setmodalVisible] = useState<boolean>(false);
   const [itemToDelete, setitemToDelete] = useState<DATA>();
+  const [input, setinput] = useState(false)
 
 
 
@@ -39,13 +40,12 @@ function Input() {
       },
     ]);
     settextInput("");
+    setinput(false)
   };
 
   const handleOnDelete = () => setDATA([]);
 
-  const handleOnDeleteItem = (item: DATA) => {
 
-  }
 
   const modalOpen = (id:string) => {
     setmodalVisible(true);
@@ -60,6 +60,9 @@ function Input() {
     setDATA(newData);
     setmodalVisible(false);
   }
+  const handleNewTask = () => {
+    setinput(true)
+  }
 
 
 
@@ -68,7 +71,9 @@ function Input() {
   };
   return (
     <View style={styles.container}> 
-        <View style={styles.containerInput}>
+      <Button title="Nuevo Task" onPress={handleNewTask} color="green" />
+      <Button title="CLEAR" onPress={handleOnDelete} color="red" />
+       {input ?  <View style={styles.containerInput}>
         <TextInput
             style={styles.textInput}
             placeholder="Escribe el Task"
@@ -76,16 +81,18 @@ function Input() {
             value={textInput}
         />
         <Button title="ADD" onPress={handleOnClick} color="green" />
-        <Button title="CLEAR" onPress={handleOnDelete} color="red" />
-        </View>
+        
+        </View>: <View>
         <View style={styles.itemContainer}>
         <FlatList
         data={DATA}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         />
-    </View>
-    <ModalView modalVisible={modalVisible} modalClose={modalClose} deleteFun={deleteItem}/>
+        </View>
+        <ModalView modalVisible={modalVisible} modalClose={modalClose} deleteFun={deleteItem}/>
+        </View>}
+        
    </View> 
   );
 }
@@ -95,7 +102,7 @@ const styles = StyleSheet.create({
         padding: 40,
     },
   containerInput: {
-    
+    marginTop:40,
     flexDirection: "row",
     justifyContent: "space-between",
   },
