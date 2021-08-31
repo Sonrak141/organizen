@@ -9,6 +9,8 @@ import {
     FlatList,
     CheckBox 
 } from "react-native";
+import { useFonts} from 'expo-font';
+import AppLoading from 'expo-app-loading'
 
 interface Props {
     item:any
@@ -17,10 +19,18 @@ interface Props {
 
 const Item: React.FC<Props> = ({item, modalOpen}) => {
     const [done, setdone] = useState(false)
+    const [dataLoaded] = useFonts({
+        'open-sans': require('../../assets/fonts/OpenSans-Regular.ttf'),
+        'open-sans-bold': require('../../assets/fonts/OpenSans-Bold.ttf'),
+      })
+    
+      if (!dataLoaded) {
+        return <AppLoading />
+      }
     return (
         <TouchableOpacity onPress={() => modalOpen(item.id)} style={[styles.item]}>
             <View style={[styles.itemContainer]}>
-            <Text>{item.title}</Text>
+            <Text style={[styles.text]}>{item.title}</Text>
             <CheckBox
           value={done}
           onValueChange={setdone}
@@ -42,6 +52,9 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
+    },
+    text: {
+        fontFamily: 'open-sans-bold'
     }  
 
 })
