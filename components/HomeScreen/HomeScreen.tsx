@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Button, Image } from 'react-native'
+import { Text, View, StyleSheet, Button, Image, Platform, TouchableOpacity } from 'react-native'
 import { useFonts} from 'expo-font';
 import AppLoading from 'expo-app-loading'
 
@@ -18,7 +18,10 @@ function HomeScreen({change}) {
             <View style={styles.homeContainer}>
                 <Text style={styles.text}> OrganiZen </Text>
                 <Image source={require('../../assets/images/logo.png')}/>
-                <Button title="Nuevo Task" onPress={change} color='#C5AC96'/>
+                <TouchableOpacity onPress={change} style={styles.btn}>
+                    <Text style={styles.btnText}>Log In</Text>
+                </TouchableOpacity>
+               
             </View>
         )
     
@@ -34,9 +37,21 @@ const styles = StyleSheet.create({
        
     },
     text:{
-        color: 'white',
+        color: '#FAFFF5',
         fontSize:50,
         fontFamily: 'open-sans-bold'
+    },
+    btn:{
+        backgroundColor: '#FAFFF5',
+        paddingVertical: 10,
+        paddingHorizontal: 50,
+        borderRadius: 20,
+        marginTop:80
+        
+    },
+    btnText:{
+        fontSize:25,
+        color: '#656565'
     }
 })
 

@@ -4,6 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import Header from './components/Header/Header';
 import Input from './components/Input/Input';
 import Home from './screens/Home';
+import TaskNavigator from './navigation/TaskNavigator';
+
 
 
 export default function App() {
@@ -14,9 +16,10 @@ export default function App() {
   }
   
   return (
-    <View style={styles.container}>
-      {view? <Input/>:  <Home change={handleOnClick}/>}
-    </View>
+    // <View style={styles.container}>
+    //   {view? <Input/>:  <Home change={handleOnClick}/>}
+    // </View>
+    <TaskNavigator/>
   );
 }
 
