@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet, Button, Image, Platform, TouchableOpacity } from 'react-native'
 import { useFonts} from 'expo-font';
 import AppLoading from 'expo-app-loading'
+import { NavigationContainer } from '@react-navigation/native'
+import {createStackNavigator} from '@react-navigation/stack'
 
-function HomeScreen({change}) {
+const HomeScreen = ({navigation}) => {
 
     const [dataLoaded] = useFonts({
         'open-sans': require('../../assets/fonts/OpenSans-Regular.ttf'),
@@ -18,7 +20,7 @@ function HomeScreen({change}) {
             <View style={styles.homeContainer}>
                 <Text style={styles.text}> OrganiZen </Text>
                 <Image source={require('../../assets/images/logo.png')}/>
-                <TouchableOpacity onPress={change} style={styles.btn}>
+                <TouchableOpacity onPress={navigation} style={styles.btn}>
                     <Text style={styles.btnText}>Log In</Text>
                 </TouchableOpacity>
                
