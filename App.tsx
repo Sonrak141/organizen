@@ -5,6 +5,8 @@ import Header from './components/Header/Header';
 import Input from './components/Input/Input';
 import Home from './screens/Home';
 import TaskNavigator from './navigation/TaskNavigator';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
 
@@ -14,12 +16,15 @@ export default function App() {
   const handleOnClick = () => {
     setview(true);
   }
+  const Tab = createBottomTabNavigator();
   
   return (
-    // <View style={styles.container}>
-    //   {view? <Input/>:  <Home change={handleOnClick}/>}
-    // </View>
-    <TaskNavigator/>
+    <NavigationContainer>
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={Home} options={{headerShown:false}} />
+      <Tab.Screen name="Tasks" component={TaskNavigator} options={{headerShown:false}}/>
+    </Tab.Navigator>
+  </NavigationContainer>
   );
 }
 

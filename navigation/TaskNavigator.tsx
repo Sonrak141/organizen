@@ -10,15 +10,14 @@ import Home from '../screens/Home'
 const Stack = createStackNavigator();
 
 const TaskNavigator = () => (
-    <NavigationContainer>
-        <Stack.Navigator initialRouteName='Home'>
-            <Stack.Screen name='Home' component={Home}/>    
-            <Stack.Screen name='List' component={TaskView}/>
+    
+        <Stack.Navigator initialRouteName='List'>  
+            <Stack.Screen name='List' component={TaskView} />
             <Stack.Screen name='New' component={NewTask}/>
             <Stack.Screen name='Detail' component={TaskDetail}/>
             
         </Stack.Navigator>
-    </NavigationContainer>
+    
 )
 
 export default TaskNavigator
