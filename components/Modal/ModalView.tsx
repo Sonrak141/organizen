@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text,View,Button,Modal} from 'react-native'
+import {Text,View,Button,Modal, StyleSheet} from 'react-native'
 
 interface Props {
   modalVisible:boolean
@@ -10,15 +10,24 @@ interface Props {
 const ModalView: React.FC<Props> = ({modalVisible, modalClose, deleteFun }) => {
     return (
         <Modal animationType="slide" visible={modalVisible} >
-        <View>
+        <View style={[styles.modal]}>
           <Text>Desea eliminar item?</Text>
         </View>
-        <View>
+        <View style={[styles.modal]}>
           <Button title="Confirmar" onPress={deleteFun} color="black"/>
           <Button title="Cerrar" onPress={modalClose} color="red"/>
         </View>
         </Modal>
     )
 }
+
+const styles = StyleSheet.create({
+  modal: {
+    justifyContent:'center',
+    alignItems: 'center',
+    flex:1,
+  
+  }
+})
 
 export default ModalView

@@ -18,6 +18,7 @@ interface Props {
 }
 
 const Item: React.FC<Props> = ({item, modalOpen}) => {
+    console.log(item)
     const [done, setdone] = useState(false)
     const [dataLoaded] = useFonts({
         'open-sans': require('../../assets/fonts/OpenSans-Regular.ttf'),

@@ -73,8 +73,7 @@ function Input() {
     <View style={styles.container}> 
       <Button title="Nuevo Task" onPress={handleNewTask} color="green" />
       <Button title="CLEAR" onPress={handleOnDelete} color="red" />
-       {input ?  <View style={styles.containerInput}>
-        <TextInput
+      <TextInput
             style={styles.textInput}
             placeholder="Escribe el Task"
             onChangeText={handleOnChange}
@@ -82,18 +81,9 @@ function Input() {
         />
         <Button title="ADD" onPress={handleOnClick} color="green" />
         
-        </View>: <View>
-        <View style={styles.itemContainer}>
-        <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        />
         </View>
-        <ModalView modalVisible={modalVisible} modalClose={modalClose} deleteFun={deleteItem}/>
-        </View>}
-        
-   </View> 
+       
+   
   );
 }
 
