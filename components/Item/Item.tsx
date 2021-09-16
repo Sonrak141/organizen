@@ -46,8 +46,19 @@ const styles = StyleSheet.create({
     item: {
         alignItems: "center",
         backgroundColor: "#CAF0BB",
-        padding: 10,
+        paddingVertical: 40,
         marginVertical: 10,
+        marginHorizontal:30,
+        borderRadius:20,
+        shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 2,
+},
+shadowOpacity: 0.25,
+shadowRadius: 3.84,
+
+elevation: 5,
       },
     itemContainer: {
         flexDirection: "row",

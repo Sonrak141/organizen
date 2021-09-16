@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Button, Image, Platform, TouchableOpacity } from 'react-native'
+import { Text, View, StyleSheet, Button, Image, Platform, TouchableOpacity, ImageBackground } from 'react-native'
 import { useFonts} from 'expo-font';
 import AppLoading from 'expo-app-loading'
 import { NavigationContainer } from '@react-navigation/native'
@@ -18,11 +18,13 @@ const HomeScreen = ({navigation}) => {
     
         return (
             <View style={styles.homeContainer}>
+                <ImageBackground source={require('../../assets/images/homeBG.jpeg')} resizeMode="cover" style={styles.image}>
                 <Text style={styles.text}> OrganiZen </Text>
                 <Image source={require('../../assets/images/logo.png')}/>
                 <TouchableOpacity onPress={navigation} style={styles.btn}>
                     <Text style={styles.btnText}>Log In</Text>
                 </TouchableOpacity>
+                </ImageBackground>
                
             </View>
         )
@@ -54,6 +56,12 @@ const styles = StyleSheet.create({
     btnText:{
         fontSize:25,
         color: '#656565'
+    },
+    image: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
     }
 })
 

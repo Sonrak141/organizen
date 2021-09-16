@@ -71,15 +71,14 @@ function Input() {
   };
   return (
     <View style={styles.container}> 
-      <Button title="Nuevo Task" onPress={handleNewTask} color="green" />
-      <Button title="CLEAR" onPress={handleOnDelete} color="red" />
       <TextInput
             style={styles.textInput}
             placeholder="Escribe el Task"
+            placeholderTextColor="black"
             onChangeText={handleOnChange}
             value={textInput}
         />
-        <Button title="ADD" onPress={handleOnClick} color="green" />
+        <Button title="ADD" onPress={handleOnClick} color="#FAFFF5" />
         
         </View>
        
@@ -97,10 +96,14 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   textInput: {
-    borderColor: "grey",
+    borderColor: "#CCDBBD",
     borderWidth: 2,
-    width: 200,
+    width: 300,
     paddingHorizontal: 10,
+    backgroundColor:'#CCDBBD',
+    alignSelf: "center",
+    height: 50,
+    borderRadius:10
   },
   itemContainer: {
     marginTop: 30,
