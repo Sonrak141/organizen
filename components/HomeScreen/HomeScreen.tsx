@@ -21,8 +21,11 @@ const HomeScreen = ({navigation}) => {
                 <ImageBackground source={require('../../assets/images/homeBG.jpeg')} resizeMode="cover" style={styles.image}>
                 <Text style={styles.text}> OrganiZen </Text>
                 <Image source={require('../../assets/images/logo.png')}/>
-                <TouchableOpacity onPress={navigation} style={styles.btn}>
+                <TouchableOpacity onPress={()=>navigation.navigate('Login')} style={styles.btn}>
                     <Text style={styles.btnText}>Log In</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.navigate('Signup')} style={styles.btn}>
+                    <Text style={styles.btnText}>Sign Up</Text>
                 </TouchableOpacity>
                 </ImageBackground>
                
@@ -43,19 +46,23 @@ const styles = StyleSheet.create({
     text:{
         color: '#FAFFF5',
         fontSize:50,
-        fontFamily: 'open-sans-bold'
+        fontFamily: 'open-sans-bold',
+        textAlign: 'center'
     },
     btn:{
         backgroundColor: '#FAFFF5',
         paddingVertical: 10,
         paddingHorizontal: 50,
         borderRadius: 20,
-        marginTop:80
+        marginTop:80,
+        width:200,
+        
         
     },
     btnText:{
         fontSize:25,
-        color: '#656565'
+        color: '#656565',
+        textAlign: 'center'
     },
     image: {
         flex: 1,

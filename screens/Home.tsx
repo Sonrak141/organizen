@@ -8,7 +8,7 @@ function Home(this: any, {navigation}) {
     
     return (
        <View style={styles.homeContainer}>
-           <HomeScreen navigation={() => navigation.navigate('List')}/>
+           <HomeScreen navigation={undefined} />
        </View>
     )
 }
