@@ -35,8 +35,8 @@ export default function App() {
   }else{
     return(
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown:false}}>  
-            <Stack.Screen name='Home' component={Home} />
+        <Stack.Navigator initialRouteName='Home'>  
+            <Stack.Screen name='Home' component={Home}  options={{headerShown: false}}/>
             <Stack.Screen name='Login' component={Login} />
             <Stack.Screen name='Signup' component={Signup}/>
             

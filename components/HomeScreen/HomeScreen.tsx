@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet, Button, Image, Platform, TouchableOpacity, ImageBackground } from 'react-native'
 import { useFonts} from 'expo-font';
 import AppLoading from 'expo-app-loading'
-import { NavigationContainer } from '@react-navigation/native'
-import {createStackNavigator} from '@react-navigation/stack'
 
 const HomeScreen = ({navigation}) => {
 
