@@ -10,6 +10,10 @@ import {
 } from "react-native";
 import Item from "../Item/Item";
 import ModalView from "../Modal/ModalView"
+import {useDispatch, useSelector} from 'react-redux'
+import { addItem } from "../../store/actions/Task.action";
+import { RootState } from '../../store';
+
 
 interface DATA {
   id: string;
@@ -17,8 +21,10 @@ interface DATA {
 }
 
 function Input() {
-    const [textInput, settextInput] = useState<string>("");
-  const [DATA, setDATA] = useState<DATA[]>([]);
+  const dispatch = useDispatch();
+  const tasks = useSelector((state: RootState) =>state.tasks.tasks)
+  const [textInput, settextInput] = useState<string>("");
+  const [DATA, setDATA] = useState({});
   const [modalVisible, setmodalVisible] = useState<boolean>(false);
   const [itemToDelete, setitemToDelete] = useState<DATA>();
   const [input, setinput] = useState(false)
@@ -27,39 +33,35 @@ function Input() {
 
   const handleOnChange = (t: string): void => settextInput(t);
 
-  const handleOnClick = () => {
+  const handleOnClick = async () => {
     let idprev = 0;
-    if (DATA) {
-      idprev = DATA.length + 1;
-    }
-    setDATA([
-      ...DATA,
+    idprev = tasks.length + 1;
+    
+    await setDATA([
       {
         id: idprev.toString(),
         title: textInput,
-      },
-    ]);
+      }]
+    )
+    
+    await dispatch({
+      type:'ADD_ITEM',
+      tasks:DATA
+    });
     settextInput("");
     setinput(false)
+    console.log(tasks)
   };
 
-  const handleOnDelete = () => setDATA([]);
+  
 
 
 
   const modalOpen = (id:string) => {
     setmodalVisible(true);
-    setitemToDelete(DATA.find(item => item.id === id))
+    // setitemToDelete(DATA.find(item => item.id === id))
   }
-  const modalClose = () => setmodalVisible(false);
 
-  const deleteItem = () => {
-    let id = ''
-    itemToDelete? id = itemToDelete.id: null
-    const newData = DATA.filter((item) => item.id !== id);
-    setDATA(newData);
-    setmodalVisible(false);
-  }
   const handleNewTask = () => {
     setinput(true)
   }

@@ -1,14 +1,20 @@
+import{ADD_ITEM,} from "../actions/Task.action"
+
+
 const initialState = {
-    tasks: [
-        {
-            id:'asda',
-            title: 'Test 1'
-        }
-    ],
+    tasks: [],
 }
 
 const TaskReducer = (state = initialState, action) => {
-    return state
+    switch(action.type) {
+        case ADD_ITEM:
+            return {
+                ...state,
+                tasks: state.tasks.concat(action.tasks)
+            }
+        default: 
+        return state
+    }
 }
 
 export default TaskReducer;
