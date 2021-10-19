@@ -1,14 +1,27 @@
-import React from 'react'
+import React, {useEffect,useState} from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import TaskList from '../components/TaskList/TaskList'
 import { useSelector, useDispatch, connect } from 'react-redux';
 import { RootState } from '../store';
+import axios from 'axios';
+import {URL_API} from '../constants/databas'
 
 
 
 const TaskView = ({navigation}) => {
+    const [Tareas, setTareas] = useState([])
     const dispatch = useDispatch();
     const tasks = useSelector((state: RootState) =>state.tasks.tasks)
+    useEffect(() => {
+
+        axios(
+            'https://organizen-81cdc-default-rtdb.firebaseio.com/edades'
+        )
+
+        // .then((res)=> setTareas(res.data));
+        .then((res)=> console.log(res));
+    },[]) ;
+    
     
     return (
         <View style={styles.taskView}>
@@ -18,6 +31,9 @@ const TaskView = ({navigation}) => {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={()=>navigation.navigate('Detail')}style={styles.btn}>
                     <Text>Task Details</Text>
+                </TouchableOpacity> 
+                <TouchableOpacity onPress={()=>console.log(tasks)}style={styles.btn}>
+                    <Text>test</Text>
                 </TouchableOpacity> 
             </View>
             <TaskList data={tasks}/>

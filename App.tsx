@@ -1,6 +1,6 @@
 
 import React, {useState} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import User from './screens/User'
 import TaskNavigator from './navigation/TaskNavigator';
 import { NavigationContainer } from '@react-navigation/native';
@@ -21,13 +21,15 @@ export default function App() {
  
 
     return (
+      <SafeAreaView style={styles.container}>
       <Provider store={store}>
         <Index/>
       </Provider>
+      </SafeAreaView>
     )}
 
 const styles = StyleSheet.create({
   container: {
-    
+    flex:1
   },
 })

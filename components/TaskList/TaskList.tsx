@@ -17,16 +17,12 @@ interface DATA {
   }
 
 const TaskList = ({data}) => {
-    const [DATA, setDATA] = useState<DATA[]>(data);
+    const [DATA, setDATA] = useState(data);
+    
     const [modalVisible, setmodalVisible] = useState<boolean>(false);
     const [itemToDelete, setitemToDelete] = useState<DATA>();
-    // console.log(DATA)
-    const tasks=[
-        {
-            id: 'asda',
-            title:'dasdasda'
-        }
-    ]
+    console.log(DATA)
+ 
    
 
     const modalOpen = (id:string) => {
@@ -46,16 +42,16 @@ const TaskList = ({data}) => {
       
 
     const renderItem = ({ item }: { item: DATA }) => {
-        
+      
         return <Item item={item} modalOpen={modalOpen}/>
       };
       if(DATA!==[]) {
-          
+          console.log(data)
         return(
          <View>
          <View style={styles.itemContainer}>
     <FlatList
-    data={DATA}
+    data={data}
     renderItem={renderItem}
     keyExtractor={(item) => item.id}
     />
