@@ -1,6 +1,6 @@
 
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Platform } from 'react-native';
 import User from './screens/User'
 import TaskNavigator from './navigation/TaskNavigator';
 import { NavigationContainer } from '@react-navigation/native';
@@ -19,14 +19,25 @@ const Stack = createStackNavigator();
 
 export default function App() {
  
-
+  if (Platform.OS === 'ios') {
+    return (
+      
+      <Provider store={store}>
+        <Index/>
+      </Provider>
+      
+    )
+  }else{
     return (
       <SafeAreaView style={styles.container}>
       <Provider store={store}>
         <Index/>
       </Provider>
       </SafeAreaView>
-    )}
+    )
+  }
+
+    }
 
 const styles = StyleSheet.create({
   container: {
