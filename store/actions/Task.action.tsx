@@ -6,7 +6,7 @@ export const CONFIRM_CART = 'CONFIRM_CART';
 
 export const addItem = (item) => ({
   type: ADD_ITEM,
-  item,
+  item:item,
 });
 
 export const removeItem = (itemID) => ({

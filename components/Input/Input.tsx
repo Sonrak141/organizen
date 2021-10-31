@@ -34,20 +34,18 @@ function Input() {
   const handleOnChange = (t: string): void => settextInput(t);
 
   const handleOnClick = async () => {
-    let idprev = 0;
-    idprev = tasks.length + 1;
+  
+    let idprev = tasks.length + 1;
     
     await setDATA([
       {
-        id: idprev.toString(),
+        itemID: idprev.toString(),
         title: textInput,
       }]
     )
     
-    await dispatch({
-      type:'ADD_ITEM',
-      tasks:DATA
-    });
+    await dispatch(addItem(DATA));
+    await console.log(DATA)
     settextInput("");
     setinput(false)
     console.log(tasks)
@@ -69,6 +67,7 @@ function Input() {
 
 
   const renderItem = ({ item }: { item: DATA }) => {
+    
     return <Item item={item} modalOpen={modalOpen}/>
   };
   return (

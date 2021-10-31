@@ -10,6 +10,9 @@ import {
 } from "react-native";
 import Item from "../Item/Item";
 import ModalView from "../Modal/ModalView"
+import {useDispatch, useSelector} from 'react-redux'
+import { RootState } from '../../store';
+
 
 interface DATA {
     id: string;
@@ -18,10 +21,10 @@ interface DATA {
 
 const TaskList = ({data}) => {
     const [DATA, setDATA] = useState(data);
-    
+    const tasks = useSelector((state: RootState) =>state.tasks.tasks)
     const [modalVisible, setmodalVisible] = useState<boolean>(false);
     const [itemToDelete, setitemToDelete] = useState<DATA>();
-    console.log(DATA)
+    console.log(tasks)
  
    
 
@@ -41,19 +44,18 @@ const TaskList = ({data}) => {
 
       
 
-    const renderItem = ({ item }: { item: DATA }) => {
+    const renderItem = (item) => {
       
         return <Item item={item} modalOpen={modalOpen}/>
       };
       if(DATA!==[]) {
-          console.log(data)
         return(
          <View>
          <View style={styles.itemContainer}>
     <FlatList
     data={data}
     renderItem={renderItem}
-    keyExtractor={(item) => item.id}
+    keyExtractor={(item) => item.itemID}
     />
     </View>
     <ModalView modalVisible={modalVisible} modalClose={modalClose} deleteFun={deleteItem}/>

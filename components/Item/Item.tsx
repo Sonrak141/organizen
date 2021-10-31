@@ -32,6 +32,7 @@ const Item: React.FC<Props> = ({item, modalOpen}) => {
         <TouchableOpacity onPress={() => modalOpen(item.id)} style={[styles.item]}>
             <View style={[styles.itemContainer]}>
             <Text style={[styles.text]}>{item.title}</Text>
+            <Text>{item.userId}</Text>
             <CheckBox
           value={done}
           onValueChange={setdone}

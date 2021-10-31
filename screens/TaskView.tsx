@@ -8,19 +8,11 @@ import {URL_API} from '../constants/databas'
 
 
 
+
 const TaskView = ({navigation}) => {
     const [Tareas, setTareas] = useState([])
     const dispatch = useDispatch();
     const tasks = useSelector((state: RootState) =>state.tasks.tasks)
-    useEffect(() => {
-
-        axios(
-            'https://organizen-81cdc-default-rtdb.firebaseio.com/edades'
-        )
-
-        // .then((res)=> setTareas(res.data));
-        .then((res)=> console.log(res));
-    },[]) ;
     
     
     return (
